@@ -1,0 +1,239 @@
+/* El personaje se mueve para llegar a un punto. */
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f4;
+  color: #1f1f1f;
+}
+
+/* ===== TOPBAR ===== */
+.topbar{
+  background: linear-gradient(90deg, #2d8a2d, #8cc63f);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topbar h1{
+  margin: 0;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.topbar .right{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar .right span{
+  color: #fff;
+  font-weight: 700;
+  background: rgba(255,255,255,0.16);
+  padding: 8px 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+/* Botón cerrar sesión */
+.btn-outline{
+  text-decoration: none;
+  font-weight: 800;
+  padding: 9px 12px;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.9);
+  color: #fff;
+  transition: 0.2s ease;
+}
+
+.btn-outline:hover{
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-1px);
+}
+
+/* ===== LAYOUT ===== */
+.layout{
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - 70px);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+  padding: 18px;
+  background: linear-gradient(180deg, #8cc63f, #d26b17);
+  border-right: 4px solid rgba(0,0,0,0.06);
+}
+
+.sidebar h2{
+  margin: 6px 0 14px;
+  font-size: 18px;
+  color: #1b1b1b;
+  background: rgba(255,255,255,0.55);
+  padding: 10px 12px;
+  border-radius: 14px;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.08);
+}
+
+/* Links del menú lateral */
+.side-link{
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 900;
+  padding: 12px 10px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  background: rgba(255,255,255,0.22);
+  color: #0f2b0f;
+  border: 2px solid rgba(255,255,255,0.32);
+  box-shadow: 0 10px 16px rgba(0,0,0,0.06);
+  transition: 0.2s ease;
+}
+
+.side-link:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.32);
+}
+
+.side-link.active{
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(45,138,45,0.35);
+  outline: 3px solid rgba(255,255,255,0.55);
+}
+
+/* ===== CONTENT ===== */
+.content{
+  padding: 22px;
+}
+
+.content h2{
+  margin: 10px 0 6px;
+  font-size: 22px;
+  color: #215a21;
+}
+
+.content p{
+  margin: 0 0 18px;
+  color: #3b3b3b;
+  line-height: 1.5;
+}
+
+/* ===== CARDS ===== */
+.cards{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 16px;
+  max-width: 980px;
+}
+
+.card{
+  text-decoration: none;
+  background: #fff;
+  color: #222;
+  border-radius: 18px;
+  padding: 18px;
+  border: 2px solid #e6efe6;
+  box-shadow: 0 12px 22px rgba(0,0,0,0.08);
+  transition: 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  background: #2d8a2d;
+}
+
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px rgba(0,0,0,0.12);
+}
+
+.card h3{
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #2d8a2d;
+}
+
+.card p{
+  margin: 0 0 14px;
+  color: #333;
+}
+
+/* Botón "Ir" */
+.go{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #2d8a2d;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  width: 110px;
+  transition: 0.2s ease;
+}
+
+.card:hover .go{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+/* Tarjeta peligrosa (Eliminar) */
+.card.danger{
+  border-color: #ffe0e0;
+}
+
+.card.danger::before{
+  background: #c0392b;
+}
+
+.card.danger h3{
+  color: #c0392b;
+}
+
+.dangerBtn{
+  background: #c0392b;
+}
+
+.card:hover .dangerBtn{
+  filter: brightness(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 980px){
+  .layout{
+    grid-template-columns: 1fr;
+  }
+  .sidebar{
+    display: none;
+  }
+  .cards{
+    grid-template-columns: 1fr;
+  }
+  .topbar h1{
+    font-size: 16px;
+  }
+  .topbar .right span{
+    display: none;
+  }
+}

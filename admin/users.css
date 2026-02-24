@@ -1,0 +1,52 @@
+/* El personaje se mueve para llegar a un punto. */
+body{ margin:0; font-family:Arial; background:#f2f2f2; }
+.topbar{
+  background:#8cc63f;
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:3px solid #2d8a2d;
+}
+.btn-outline{
+  padding:8px 12px;
+  border:2px solid #2d8a2d;
+  color:#2d8a2d;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:900;
+  background:white;
+}
+.wrap{ max-width:1000px; margin:18px auto; padding:0 14px; }
+.card{
+  background:white;
+  padding:16px;
+  border-radius:14px;
+  border:2px solid #e7e7e7;
+  max-width:520px;
+}
+.card input, .card button{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:12px;
+  border:1px solid #ccc;
+}
+.card button{
+  background:#2d8a2d;
+  color:white;
+  border:none;
+  font-weight:900;
+  cursor:pointer;
+}
+.card.danger button{ background:#c0392b; }
+.search{ display:flex; gap:10px; margin-bottom:12px; }
+.search input{ flex:1; padding:12px; border-radius:12px; border:1px solid #ccc; }
+.search button{ padding:12px 18px; border-radius:12px; border:none; background:#2d8a2d; color:white; font-weight:900; cursor:pointer; }
+.table-wrap{ overflow:auto; background:white; border-radius:12px; border:1px solid #e0e0e0; }
+table{ width:100%; border-collapse:collapse; min-width:760px; }
+th,td{ padding:10px; border-bottom:1px solid #ececec; text-align:left; }
+th{ background:#f6fff0; }
+.msg{ font-weight:900; padding:10px 12px; border-radius:12px; }
+.msg.ok{ background:#e7ffe7; color:#1c6b1c; }
+.msg.bad{ background:#ffe7e7; color:#8f1d1d; }
